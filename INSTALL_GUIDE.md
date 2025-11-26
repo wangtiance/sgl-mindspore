@@ -3,6 +3,7 @@ This is a step-by-step guide helping you run MindSpore models in SGLang.
 ### 1. Install CANN
 
 Please install the 8.3.RC1 community edition: [https://www.hiascend.com/developer/download/community/result?module=cann&cann=8.3.RC1]
+This step includes Ascend toolkit, kernel and nnal, as well as pip installing te and hccl.
 
 Assume the installation path is `/usr/local/Ascend`.
 
@@ -11,7 +12,7 @@ Assume the installation path is `/usr/local/Ascend`.
 ```
 git clone https://github.com/sgl-project/sglang.git
 cd sglang
-cp -y python/pyproject_other.toml python/pyproject.toml
+cp python/pyproject_other.toml python/pyproject.toml
 pip install -e "python[all_npu]"
 ```
 
