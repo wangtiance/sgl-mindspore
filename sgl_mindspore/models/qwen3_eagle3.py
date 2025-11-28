@@ -9,29 +9,21 @@ https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/models/llama_e
 """
 
 import logging
-import os
 from typing import Iterable, Optional, Tuple
 
 import torch
 from mindspore import Tensor, dtype, jit, mint, mutable, nn, ops
-from qwen3 import Qwen3DecoderLayer, Qwen3ForCausalLM, Qwen3MLP, Qwen3Model
 from sglang.srt.distributed import get_tensor_model_parallel_world_size
 from sglang.srt.layers.quantization.base_config import QuantizationConfig
 from sglang.srt.utils import add_prefix
 
 from sgl_mindspore.layers import (
-    BaseRotaryEmbedding,
     ColParallelLinear,
-    MLPColParallelLinear,
-    MsNativeAttnBackend,
     QKVParallelLinear,
     RMSNorm,
-    RowParallelLinear,
-    SwiGLU,
     VocabParallelEmbedding,
-    YaRNScalingRotaryEmbedding,
 )
-from sgl_mindspore.models.mindspore_model_base import MindSporeModelBase
+from sgl_mindspore.models.qwen3 import Qwen3DecoderLayer, Qwen3ForCausalLM, Qwen3MLP
 from sgl_mindspore.utils import _get_tp_group_name, tensor_torch2ms
 
 logger = logging.getLogger(__name__)
