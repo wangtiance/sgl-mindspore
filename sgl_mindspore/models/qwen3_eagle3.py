@@ -45,8 +45,8 @@ class Qwen3DecoderLayerEagle3(Qwen3DecoderLayer):
         self.self_attn.qkv_proj = QKVParallelLinear(
             2 * self.hidden_size,
             self.self_attn.head_dim,
-            self.self_attn.total_num_heads,
-            self.self_attn.total_num_kv_heads,
+            self.self_attn.num_heads,
+            self.self_attn.num_kv_heads,
             bias=False,
             quant_config=quant_config,
             prefix=add_prefix("qkv_proj", prefix),
