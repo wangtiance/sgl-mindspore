@@ -194,7 +194,7 @@ class Qwen3ModelEagle3(nn.Cell):
         return hidden_states_to_logits, [hidden_states_to_aux]
 
 
-class Qwen3ForCausalLMEagle3(Qwen3ForCausalLM):
+class LlamaForCausalLMEagle3(Qwen3ForCausalLM):
     def __init__(
         self,
         config: Qwen3Config,
@@ -272,4 +272,4 @@ class Qwen3ForCausalLMEagle3(Qwen3ForCausalLM):
                     # Make sure the weight is loaded on device, so the kv cache calculation is correct.
 
 
-EntryClass = [Qwen3ForCausalLMEagle3]
+EntryClass = [LlamaForCausalLMEagle3]
